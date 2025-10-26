@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hritvija Singh - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --------------------- */
+        /* --- Global Styles --- */
+        /* --------------------- */
+        :root {
+            --bg-color: #121212;
+            --card-color: #1e1e1e;
+            --font-color: #f0f0f0;
+            --font-color-secondary: #a0a0a0;
+            --border-color: #2f2f2f;
+            
+            /* New Professional Color Palette */
+            --accent-color: #6D28D9; /* Deep Violet */
+            --accent-color-light: #f5f3ff; /* Light Violet (for badges) */
+            --accent-color-text: #c4b5fd; /* Lighter Violet (for text) */
+            --accent-color-dark: #3b177d; /* Dark Violet (for tags) */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--font-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: white;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            color: var(--font-color-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--font-color-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            list-style: none;
+        }
+
+        .tag {
+            background-color: var(--accent-color-dark);
+            color: var(--accent-color-text);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* --------------------- */
+        /* --- Navigation    --- */
+        /* --------------------- */
+        nav {
+            padding: 1.5rem 0;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--font-color-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .nav-links .icon-link svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--font-color-secondary);
+            transition: fill 0.3s ease;
+        }
+        
+        .nav-links .icon-link:hover svg {
+            fill: white;
+        }
+
+        .nav-cta {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background-color: #5a1db9; /* Darker accent */
+        }
+        
+        /* --------------------- */
+        /* --- Hero Section  --- */
+        /* --------------------- */
+        header {
+            padding: 8rem 0;
+            text-align: center;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 500;
+            color: var(--accent-color-text);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--font-color-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .hero-badge {
+            background-color: var(--accent-color-light);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color-dark);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--accent-color);
+        }
+
+        /* --------------------- */
+        /* --- Skills Ticker --- */
+        /* --------------------- */
+        .skills-ticker {
+            width: 100%;
+            overflow: hidden;
+            padding: 1.5rem 0;
+            background-color: var(--card-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .skills-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .skill-item {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--font-color-secondary);
+            margin: 0 1.5rem;
+        }
+        
+        .skill-item span {
+            color: var(--accent-color-text);
+            margin-right: 0.75rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --------------------- */
+        /* --- Achievements  --- */
+        /* --------------------- */
+        .achievement-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-card h4 {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .achievement-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* --------------------- */
+        /* --- Experience    --- */
+        /* --------------------- */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 70px;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-color);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .timeline-content {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        .timeline-content p.date {
+            font-size: 0.9rem;
+            color: var(--font-color-secondary);
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .timeline-content p.company {
+            font-size: 1rem;
+            color: var(--accent-color-text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* --------------------- */
+        /* --- Leadership    --- */
+        /* --------------------- */
+        #leadership .card {
+            padding: 3rem;
+        }
+        
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .leadership-details h3 {
+            color: var(--accent-color-text);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .leadership-details ul {
+            list-style: none;
+            padding-left: 1.25rem;
+        }
+        
+        .leadership-details li {
+            position: relative;
+            color: var(--font-color-secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        
+        .leadership-details li::before {
+            content: '✓';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* --------------------- */
+        /* --- Projects      --- */
+        /* --------------------- */
+        .project-card {
+            flex-grow: 1; /* Makes cards in a row equal height */
+        }
+        
+        .project-card h4 {
+            font-size: 1.2rem;
+        }
+
+        .project-card .tag-list {
+            margin-top: auto; /* Pushes tags to the bottom */
+        }
+
+        /* --------------------- */
+        /* --- Education     --- */
+        /* --------------------- */
+        .education-card {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color-text);
+            line-height: 1;
+        }
+        
+        .education-card h4 {
+            margin-top: 0.5rem;
+        }
+        
+        .education-card p {
+            font-size: 1rem;
+            color: var(--font-color-secondary);
+            margin-bottom: 0;
+        }
+        
+        /* --------------------- */
+        /* --- Contact       --- */
+        /* --------------------- */
+        footer {
+            padding: 6rem 0 2rem 0;
+            text-align: center;
+            background-color: var(--card-color);
+            border-top: 1px solid var(--border-color);
+            margin-top: 6rem;
+        }
+        
+        footer h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-email {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--font-color-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-email:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .social-links a svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--font-color-secondary);
+            transition: fill 0.3s ease;
+        }
+        
+        .social-links a:hover svg {
+            fill: var(--accent-color);
+        }
+        
+        .copyright {
+            color: var(--font-color-secondary);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        /* --------------------- */
+        /* --- Responsive    --- */
+        /* --------------------- */
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .project-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .leadership-grid {
+                grid-template-columns: 1fr 1.5fr;
+                gap: 3rem;
+                align-items: start;
+            }
+        }
+        
+        @media (min-width: 640px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            header {
+                padding: 4rem 0;
+            }
+            section {
+                padding: 4rem 0;
+            }
+        }
+        
+        /* --- This is the new code you added --- */
+        .education-grid {
+            max-width: 900px; /* Constrain the width */
+            margin: 0 auto; /* Center the grid */
+        }
+        
+        @media (min-width: 640px) and (max-width: 767px) {
+            .education-grid {
+                grid-template-columns: 1fr; /* Stacks them to 1 column on this specific breakpoint */
+            }
+        }
+        /* --- End of new code --- */
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="nav-logo">HS.</a>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#leadership">Leadership</a>
+                <a href="#projects">Projects</a>
+                <a href="https://www.linkedin.com/in/hritvija-ssingh-b7215b258/" target="_blank" class="icon-link" aria-label="LinkedIn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.45h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.78 13.017H3.557V9h3.56v11.45zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                </a>
+                <a href="mailto:hritvijasi22@iitk.ac.in" class="nav-cta">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container">
+        <h1>Hritvija Singh</h1>
+        <div class="hero-subtitle">
+            Data Scientist | ML Engineer | E-commerce Analytics
+        </div>
+        <p class="hero-description">
+            Final Year B.Tech at IIT Kanpur, passionate about applying machine learning and data-driven insights to solve complex problems in e-commerce and tech.
+        </p>
+        <div class="hero-badges">
+            <div class="hero-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4H5C3.346 4 2 5.346 2 7v8c0 1.654 1.346 3 3 3h2v3c0 1.103.897 2 2 2h6c1.103 0 2-.897 2-2v-3h2c1.654 0 3-1.346 3-3V7C22 5.346 20.654 4 19 4zM8 18v-3h8v3H8zM20 15c0 .552-.449 1-1 1H5c-.551 0-1-.448-1-1V7c0-.552.449-1 1-1h14c.551 0 1 .448 1 1v8z"/><path d="M13 10h2V8h-2v2zM9 10h2V8H9v2zM5 10h2V8H5v2zM15 10h2V8h-2v2zM17 10h2V8h-2v2z"/></svg>
+                TATA Steel 'Women of Mettle' Finalist (Top 10)
+            </div>
+            <div class="hero-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 11c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zM10 3c0 1.654-1.346 3-3 3S4 4.654 4 3s1.346-3 3-3 3 1.346 3 3zM14 11c1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3 1.346 3 3 3zM17 14c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zM7 14c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zM14 3c1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3 1.346 3 3 3z"/></svg>
+                Nomura Global Markets Mentee
+            </div>
+            <div class="hero-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zM12 20c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/><path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/></svg>
+                AMEX Challenge Top 10% (Decision Science)
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <div class="skills-ticker">
+            <div class="skills-track">
+                <div class="skill-item"><span>•</span> Python</div>
+                <div class="skill-item"><span>•</span> SQL</div>
+                <div class="skill-item"><span>•</span> C/C++</div>
+                <div class="skill-item"><span>•</span> PyTorch</div>
+                <div class="skill-item"><span>•</span> TensorFlow</div>
+                <div class="skill-item"><span>•</span> OpenCV</div>
+                <div class="skill-item"><span>•</span> XGBoost & LightGBM</div>
+                <div class="skill-item"><span>•</span> Scikit-learn</div>
+                <div class="skill-item"><span>•</span> Pandas & NumPy</div>
+                <div class="skill-item"><span>•</span> Streamlit</div>
+                <div class="skill-item"><span>•</span> Git</div>
+
+                <div class="skill-item"><span>•</span> Python</div>
+                <div class="skill-item"><span>•</span> SQL</div>
+                <div class="skill-item"><span>•</span> C/C++</div>
+                <div class="skill-item"><span>•</span> PyTorch</div>
+                <div class="skill-item"><span>•</span> TensorFlow</div>
+                <div class="skill-item"><span>•</span> OpenCV</div>
+                <div class="skill-item"><span>•</span> XGBoost & LightGBM</div>
+                <div class="skill-item"><span>•</span> Scikit-learn</div>
+                <div class="skill-item"><span>•</span> Pandas & NumPy</div>
+                <div class="skill-item"><span>•</span> Streamlit</div>
+                <div class="skill-item"><span>•</span> Git</div>
+            </div>
+        </div>
+
+        <section id="experience" class="container">
+            <h2>Professional & Research Experience</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">🏭</div>
+                    <div class="timeline-content">
+                        <p class="date">June 2025 – August 2025</p>
+                        <h4>Summer Associate, TATA Steel</h4>
+                        <p class="company">Jamshedpur</p>
+                        <p>Diagnosed and mitigated rhomboidity defects in billets using a Python-Pandas-ML pipeline. Consolidated 1.2M+ casting log rows, benchmarked OLS, Random Forest, and XGBoost (AUC=0.87), and used SHAP to identify key variables. Recommended process points projected to cut defects by 28%.</p>
+                        <ul class="tag-list">
+                            <li class="tag">Data Analysis</li>
+                            <li class="tag">XGBoost</li>
+                            <li class="tag">Pandas</li>
+                            <li class="tag">SHAP</li>
+                            <li class="tag">Manufacturing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">🤖</div>
+                    <div class="timeline-content">
+                        <p class="date">January 2025 – August 2025</p>
+                        <h4>Generative AI Internship, ISB Hyderabad</h4>
+                        <p class="company">Hyderabad</p>
+                        <p>Automated 360°-survey analytics using a Python-SQLite-LLM stack. Architected a relational schema, built an ETL pipeline, and fine-tuned CodeLLaMA-7B on 9.3k NL-SQL pairs (92% match). Deployed a Streamlit dashboard to convert NL queries to SQL and visualizations in real-time.</p>
+                        <ul class="tag-list">
+                            <li class="tag">Generative AI</li>
+                            <li class="tag">LLM Fine-Tuning</li>
+                            <li class="tag">CodeLLaMA</li>
+                            <li class="tag">SQL</li>
+                            <li class="tag">Streamlit</li>
+                            <li class="tag">ETL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">🚌</div>
+                    <div class="timeline-content">
+                        <p class="date">June 2024 – July 2024</p>
+                        <h4>Machine Learning Internship, CEEW</h4>
+                        <p class="company">New Delhi</p>
+                        <p>Developed ML models to analyze bus demand-supply gaps using DIMTS (40% of Delhi's fleet), OpenStreetMap (OSM), and GPS data. Executed preprocessing and modeling to map city-level access and derive insights for transit efficiency.</p>
+                        <ul class="tag-list">
+                            <li class="tag">Machine Learning</li>
+                            <li class="tag">Urban Mobility</li>
+                            <li class="tag">Data Visualization</li>
+                            <li class="tag">Python</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">🔬</div>
+                    <div class="timeline-content">
+                        <p class="date">January 2025 – May 2025</p>
+                        <h4>APT Analysis of Alloys, Undergraduate Project</h4>
+                        <p class="company">Mentor: Prof. N.P. Gurao, IIT Kanpur</p>
+                        <p>Developed a Python pipeline for Atom Probe Tomography (APT) data to analyze nanoscale clustering. Benchmarked K-means, GMM, and DBSCAN, then switched to geometry-aware Delaunay tessellation, improving clustering precision by 35% over grid-based binning. Built a modular Python toolkit for ROI extraction and 3D visualization.</p>
+                        <ul class="tag-list">
+                            <li class="tag">Material Science</li>
+                            <li class="tag">Clustering</li>
+                            <li class="tag">DBSCAN</li>
+                            <li class="tag">Python</li>
+                            <li class="tag">Computational Materials</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="leadership" class="container">
+            <h2>Key Leadership Experience</h2>
+            <div class="card">
+                <div class="leadership-grid">
+                    <div class="leadership-title">
+                        <h4>Manager, Career Development Wing</h4>
+                        <p class="company">Academic and Career Council, IITK</p>
+                        <p class="date">May 2024 – May 2025</p>
+                        <p>Directed a 23-secretary council to equip over 1,000+ students with career resources, mentorship, and preparatory tools, significantly reducing costs through strategic partnerships.</p>
+                    </div>
+                    <div class="leadership-details">
+                        <h3>Leadership</h3>
+                        <ul>
+                            <li>Spearheaded a 23-secretary council, selected from 150+ applicants; set OKRs, hiring rubrics, and weekly cadence.</li>
+                            <li>Cultivated strategic partnerships with GFG and Career Launcher, negotiating budgets and subsidized courses.</li>
+                            <li>Directed Career Connect '25, a 3-day flagship event with a multi-track agenda reaching 500+ students.</li>
+                        </ul>
+
+                        <h3>Initiatives & Impact</h3>
+                        <ul>
+                            <li>Designed and executed two major prep series: Internship Preparation Series & Placement Prep Series.</li>
+                            <li>Launched the Internship Mentorship Program '24, pairing 300+ Y22 mentees with 40+ Y21 mentors.</li>
+                            <li>Institutionalized a comprehensive resource ecosystem (Resume & Resource Repositories).</li>
+                            <li>Organized "Intro to CFA" & "Ace the CAT" sessions; secured an 86% discount for the CAT mock test series.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="container">
+            <h2>Selected Projects</h2>
+            <p class="section-subtitle">A selection of my work in data science, machine learning, and data-driven strategy.</p>
+            
+            <div class="grid-3 project-grid">
+                <div class="card project-card">
+                    <h4>Customer Segmentation (PCA)</h4>
+                    <p>Clustered customers for a retailer using transaction-level data. Applied PCA to reduce feature dimensionality by 88% while retaining 80% of variance. Leveraged K-Means to identify distinct segments.</p>
+                    <ul class="tag-list">
+                        <li class="tag">Clustering</li>
+                        <li class="tag">K-Means</li>
+                        <li class="tag">PCA</li>
+                        <li class="tag">E-commerce</li>
+                    </ul>
+                </div>
+                
+                <div class="card project-card">
+                    <h4>AMEX Decision Science Challenge</h4>
+                    <p>Predicted T20 cricket match outcomes by engineering match, batsman, and bowler-level features. Used XGBoost and LightGBM with hyperparameter tuning to achieve 83.68% accuracy, ranking in top 10%.</p>
+                    <ul class="tag-list">
+                        <li class="tag">Decision Science</li>
+                        <li class="tag">XGBoost</li>
+                        <li class="tag">Classification</li>
+                    </ul>
+                </div>
+                
+                <div class="card project-card">
+                    <h4>Analysing Airbnb Business Strategy</h4>
+                    <p>Conducted a market survey (200+ participants) and applied SWOT, Porter's 5 Forces, and 4Ps to benchmark Airbnb vs. competitors. Proposed strategies to boost rural listings and add bundled pricing features.</p>
+                    <ul class="tag-list">
+                        <li class="tag">Business Strategy</li>
+                        <li class="tag">SWOT</li>
+                        <li class="tag">Market Research</li>
+                    </ul>
+                </div>
+                
+                <div class="card project-card">
+                    <h4>Classification of Advertisements (NLP)</h4>
+                    <p>Built text classification models to predict ad categories. Benchmarked Naive Bayes and Logistic Regression (88.04% accuracy) against advanced models like LSTM and BERT (86.20% accuracy).</p>
+                    <ul class="tag-list">
+                        <li class="tag">NLP</li>
+                        <li class="tag">BERT</li>
+                        <li class="tag">Logistic Regression</li>
+                        <li class="tag">Text Classification</li>
+                    </ul>
+                </div>
+
+                <div class="card project-card">
+                    <h4>GAN-VAE for Handwritten Text</h4>
+                    <p>Built a GAN-VAE pipeline for synthesizing handwritten text. Engineered stroke-level features and used adversarial + reconstruction losses. Integrated Transformer modules for robust typed-to-handwriting conversion.</p>
+                    <ul class="tag-list">
+                        <li class="tag">Generative AI</li>
+                        <li class="tag">GAN</li>
+                        <li class="tag">VAE</li>
+                        <li class="tag">Transformers</li>
+                    </ul>
+                </div>
+                
+                <div class="card project-card">
+                    <h4>Travel Itinerary Optimisation</h4>
+                    <p>Deployed a robust XGBoost model on 120M+ data points to estimate trip durations, achieving 93.2%+ accuracy with an error of only 4.8 minutes. Implemented a Genetic Algorithm to construct time-efficient itineraries.</p>
+                    <ul class="tag-list">
+                        <li class="tag">XGBoost</li>
+                        <li class="tag">Genetic Algorithm</li>
+                        <li class="tag">Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="container">
+            <h2>Education & Scores</h2>
+            
+            <div class="grid-3 education-grid">
+                <div class="card education-card">
+                    <div class="score">7.10/10</div>
+                    <h4>B.Tech, Material Science & Eng.</h4>
+                    <p>Indian Institute of Technology, Kanpur</p>
+                </div>
+                
+                <div class="card education-card">
+                    <div class="score">91.20%</div>
+                    <h4>CBSE Board (XII)</h4>
+                    <p>Chinmaya Vidyalaya, Delhi</p>
+                </div>
+                
+                <div class="card education-card">
+                    <div class="score">97.00%</div>
+                    <h4>CBSE Board (X)</h4>
+                    <p>Chinmaya Vidyalaya</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Let's connect.</h2>
+            <a href="mailto:hritvijasi22@iitk.ac.in" class="contact-email">hritvijasi22@iitk.ac.in</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/hritvija-ssingh-b7215b258/" target="_blank" aria-label="LinkedIn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.45h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.78 13.017H3.557V9h3.56v11.45zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                </a>
+                <a href="https://github.com/Hritvija" target="_blank" aria-label="GitHub">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12A12 12 0 0 0 12 0z"/></svg>
+                </a>
+            </div>
+            
+            <p class="copyright">© Hritvija Singh 2025. Crafted with passion.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Dynamic Greeting ---
+        // You didn't have one, but it's a nice touch to add.
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can add any simple JS here if you want.
+            console.log("Hritvija's portfolio loaded.");
+        });
+    </script>
+
+</body>
+</html>
